@@ -5,6 +5,7 @@ import {
   FETCH_LOADING,
   FETCH_ERROR,
   GET_FAVS_FROM_LS,
+  FETCH_START
 } from "./actions";
 
 const initial = {
@@ -24,6 +25,12 @@ function readFavsFromLocalStorage() {
 
 export function myReducer(state = initial, action) {
   switch (action.type) {
+    case FETCH_START:
+      return {
+        ...state,
+        loading:true
+      }
+
     case FAV_ADD:
       return state;
 
@@ -31,7 +38,10 @@ export function myReducer(state = initial, action) {
       return state;
 
     case FETCH_SUCCESS:
-      return state;
+      return {
+        ...state,
+        current: action.payload,
+      }
 
     case FETCH_LOADING:
       return state;
