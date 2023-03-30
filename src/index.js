@@ -8,8 +8,9 @@ import { applyMiddleware, legacy_createStore as createStore } from "redux";
 import { Provider } from "react-redux";
 import { myReducer } from './reducers';
 import thunk from 'redux-thunk';
+import logger from 'redux-logger'
 
-const store = createStore(myReducer,applyMiddleware(thunk));
+const store = createStore(myReducer,applyMiddleware(thunk,logger));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
